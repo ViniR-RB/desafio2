@@ -68,6 +68,10 @@ flutter:
     - assets/images/perfil.png
     - assets/images/bg.svg
     - assets/images/perfil_elypse.png
+    - assets/images/edificiocentro.png
+    - assets/images/edificionorte.png
+    - assets/images/edificiosul.png
+    - assets/images/location.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

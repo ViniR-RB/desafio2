@@ -6,7 +6,7 @@ sealed class AppTheme {
   static ThemeData theme = ThemeData(
     scaffoldBackgroundColor: AppColor.white,
     useMaterial3: true,
-    iconTheme: IconThemeData(color: AppColor.white),
+    iconTheme: const IconThemeData(color: AppColor.white),
     cardTheme: CardTheme(
         color: AppColor.white,
         elevation: 0,
@@ -21,7 +21,7 @@ sealed class AppTheme {
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: AppColor.black,
-        side: BorderSide(color: AppColor.blue, width: 1),
+        side: const BorderSide(color: AppColor.blue, width: 1),
         textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),

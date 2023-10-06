@@ -34,7 +34,7 @@ class CustomTextField extends StatelessWidget {
                 height: 1,
               ),
               validator: Validatorless.required('Esse Campo é requrido'),
-              style: TextStyle(
+              style: const TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 16,
                   overflow: TextOverflow.clip,

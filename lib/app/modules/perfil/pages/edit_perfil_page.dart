@@ -26,8 +26,8 @@ class _EditPerfilPageState extends State<EditPerfilPage> {
   late final PerfilModel _myPerfil;
   late File _imageFile = File('');
   final _picker = ImagePicker();
-  List<String> _moderadores = [];
-  final List<TextEditingController> _moderadoresEC = [];
+  final List<String> _moderadores = [];
+  final List<TextEditingController> moderadoresEC = [];
 
   Future<void> getImage() async {
     try {
@@ -43,19 +43,43 @@ class _EditPerfilPageState extends State<EditPerfilPage> {
     }
   }
 
+  void _addModerador() {
+    setState(() {
+      _moderadores.add('');
+      moderadoresEC.add(TextEditingController());
+    });
+  }
+
+  void _removeModerador(int index) {
+    setState(() {
+      _moderadores.removeAt(index);
+      moderadoresEC.removeAt(index);
+    });
+  }
+
+  void _moveTheScreen() {
+    _scrollController.animateTo(
+      300.0,
+      duration: const Duration(milliseconds: 200),
+      curve: Curves.easeInOut,
+    );
+  }
+
   _initPage() {
     _myPerfil = widget.controller.value;
-    _moderadores = widget.controller.value.moderators;
+    widget.controller.value.moderators.map((e) => _moderadores.add(e)).toList();
     nameEC = TextEditingController(text: _myPerfil.perfilName);
     bioEC = TextEditingController(text: _myPerfil.bio);
     locationEC = TextEditingController(text: _myPerfil.location);
     generalAdministratorEC =
         TextEditingController(text: _myPerfil.generalAdministrator);
+    _imageFile =
+        _myPerfil.image.contains('assets') ? File('') : File(_myPerfil.image);
   }
 
   void _creatingTextEditingControllerFromModerador() {
     for (var index = 0; index < _moderadores.length; index++) {
-      _moderadoresEC.add(TextEditingController(text: _moderadores[index]));
+      moderadoresEC.add(TextEditingController(text: _moderadores[index]));
     }
   }
 
@@ -79,11 +103,7 @@ class _EditPerfilPageState extends State<EditPerfilPage> {
   void savePerfil(GlobalKey<FormState> formKey) {
     switch (formKey.currentState!.validate()) {
       case false:
-        _scrollController.animateTo(
-          300.0,
-          duration: const Duration(milliseconds: 200),
-          curve: Curves.easeInOut,
-        );
+        _moveTheScreen();
         break;
       case true:
         if (_imageFile.path.isEmpty) {
@@ -125,7 +145,7 @@ class _EditPerfilPageState extends State<EditPerfilPage> {
                 actions: [
                   GestureDetector(
                     onTap: () => savePerfil(formKey),
-                    child: Text(
+                    child: const Text(
                       'Salvar',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -140,7 +160,8 @@ class _EditPerfilPageState extends State<EditPerfilPage> {
                 leading: switch (Modular.to.canPop()) {
                   true => IconButton(
                       onPressed: () => Modular.to.pop(),
-                      icon: Icon(Icons.arrow_back_ios, color: AppColor.blue),
+                      icon: const Icon(Icons.arrow_back_ios,
+                          color: AppColor.blue),
                     ),
                   false => const SizedBox.shrink(),
                 }),
@@ -259,11 +280,8 @@ class _EditPerfilPageState extends State<EditPerfilPage> {
                               width: 97,
                               child: TextButton(
                                   onPressed: () {
-                                    setState(() {
-                                      _moderadores.add('');
-                                      _moderadoresEC
-                                          .add(TextEditingController());
-                                    });
+                                    _addModerador();
+                                    _moveTheScreen();
                                   },
                                   child: const Text(
                                     'Adicionar',
@@ -293,7 +311,7 @@ class _EditPerfilPageState extends State<EditPerfilPage> {
                   child: SizedBox(
                       height: 44,
                       child: TextFormField(
-                        controller: _moderadoresEC[index],
+                        controller: moderadoresEC[index],
                         onChanged: (value) {
                           _moderadores[index] = value;
                         },
@@ -302,11 +320,7 @@ class _EditPerfilPageState extends State<EditPerfilPage> {
                         decoration: InputDecoration(
                             suffixIcon: IconButton(
                           onPressed: () {
-                            setState(() {
-                              _moderadores.removeWhere(
-                                  (element) => element == _moderadores[index]);
-                              _moderadoresEC.remove(_moderadoresEC[index]);
-                            });
+                            _removeModerador(index);
                           },
                           icon: const Icon(Icons.remove_circle_outline),
                         )),

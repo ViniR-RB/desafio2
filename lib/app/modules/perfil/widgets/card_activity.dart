@@ -30,7 +30,7 @@ class CardActivity extends StatelessWidget {
                 Expanded(
                   child: Text(
                     perfilName,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
                         color: AppColor.black),
@@ -39,14 +39,14 @@ class CardActivity extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 4),
-                Icon(
+                const Icon(
                   Icons.verified,
                   color: AppColor.orange,
                 ),
                 const SizedBox(
                   width: 9,
                 ),
-                Text(
+                const Text(
                   '@cidadeadm 12 dias',
                   style: TextStyle(
                       fontSize: 16,
@@ -68,8 +68,8 @@ class CardActivity extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 12.0),
+          const Padding(
+            padding: EdgeInsets.only(right: 12.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -77,10 +77,10 @@ class CardActivity extends StatelessWidget {
                   Icons.chat_bubble_outline_outlined,
                   color: AppColor.grey,
                 ),
-                const SizedBox(
+                SizedBox(
                   width: 20,
                 ),
-                const Text('0')
+                Text('0')
               ],
             ),
           ),

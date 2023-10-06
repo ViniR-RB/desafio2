@@ -39,7 +39,8 @@ class _PerfilPageState extends State<PerfilPage> {
                   leading: switch (Modular.to.canPop()) {
                     true => IconButton(
                         onPressed: () => Modular.to.pop(),
-                        icon: Icon(Icons.arrow_back_ios, color: AppColor.blue),
+                        icon: const Icon(Icons.arrow_back_ios,
+                            color: AppColor.blue),
                       ),
                     false => const SizedBox.shrink(),
                   },
@@ -74,7 +75,7 @@ class _PerfilPageState extends State<PerfilPage> {
                                 style: const TextStyle(
                                     fontWeight: FontWeight.w700, fontSize: 22),
                               ),
-                              Icon(
+                              const Icon(
                                 Icons.verified,
                                 color: AppColor.orange,
                               ),
@@ -95,25 +96,25 @@ class _PerfilPageState extends State<PerfilPage> {
                           alignment: WrapAlignment.start,
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.location_on_outlined,
                               color: AppColor.grey,
                             ),
                             const SizedBox(width: 8),
                             Text(
                               myPerfil.location,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: AppColor.grey,
                                   fontSize: 12.75,
                                   fontWeight: FontWeight.w400),
                             ),
                             const SizedBox(width: 16),
-                            Icon(
+                            const Icon(
                               Icons.calendar_month_outlined,
                               color: AppColor.grey,
                             ),
                             const SizedBox(width: 8),
-                            Text('Entrou em jan/23',
+                            const Text('Entrou em jan/23',
                                 style: TextStyle(
                                     color: AppColor.grey,
                                     fontSize: 12.75,
@@ -125,21 +126,35 @@ class _PerfilPageState extends State<PerfilPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text('Atividades',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                  color: AppColor.blue)),
-                          Text('Sobre',
-                              style: TextStyle(
-                                  color: AppColor.greyStronger, fontSize: 16)),
-                          Text('Avisos e Comunicados',
-                              style: TextStyle(
-                                  color: AppColor.greyStronger, fontSize: 16))
+                          GestureDetector(
+                            onTap: () {
+                              Modular.to.navigate('/');
+                            },
+                            child: const Text('Atividades',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                    color: AppColor.blue)),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Modular.to.navigate('/about');
+                            },
+                            child: const Text('Sobre',
+                                style: TextStyle(
+                                    color: AppColor.greyStronger,
+                                    fontSize: 16)),
+                          ),
+                          GestureDetector(
+                            child: const Text('Avisos e Comunicados',
+                                style: TextStyle(
+                                    color: AppColor.greyStronger,
+                                    fontSize: 16)),
+                          )
                         ],
                       ),
                       const SizedBox(height: 10),
-                      Divider(
+                      const Divider(
                         height: 4,
                         color: AppColor.blue,
                       ),
