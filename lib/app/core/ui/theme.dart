@@ -13,6 +13,10 @@ sealed class AppTheme {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(0),
         )),
+    inputDecorationTheme: const InputDecorationTheme(
+      border: OutlineInputBorder(),
+    ),
+    appBarTheme: const AppBarTheme(centerTitle: true),
     textTheme: GoogleFonts.openSansTextTheme(),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(

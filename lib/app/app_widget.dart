@@ -1,5 +1,5 @@
-import 'package:desafio/app/core/utils/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import 'core/ui/theme.dart';
 
@@ -8,10 +8,10 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Desafio',
       theme: AppTheme.theme,
-      routes: AppRoutes.routes,
+      routerConfig: Modular.routerConfig,
     );
   }
 }

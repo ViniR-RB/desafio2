@@ -1,8 +1,13 @@
+import 'dart:io';
+
 import 'package:desafio/app/core/ui/colors.dart';
 import 'package:flutter/material.dart';
 
 class CardActivity extends StatelessWidget {
-  const CardActivity({super.key});
+  final String perfilName;
+  final String image;
+  const CardActivity(
+      {super.key, required this.perfilName, required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -13,16 +18,18 @@ class CardActivity extends StatelessWidget {
             title: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                const CircleAvatar(
-                  backgroundImage:
-                      AssetImage('assets/images/perfil_elypse.png'),
-                ),
+                switch (image.contains('assets')) {
+                  true => CircleAvatar(backgroundImage: AssetImage(image)),
+                  false => CircleAvatar(
+                      backgroundImage: FileImage(File(image)),
+                    )
+                },
                 const SizedBox(
                   width: 16,
                 ),
                 Expanded(
                   child: Text(
-                    'Cidade ADM de MG',
+                    perfilName,
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
