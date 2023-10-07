@@ -21,6 +21,31 @@ class _AboutPageState extends State<AboutPage> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.sizeOf(context);
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        type: BottomNavigationBarType.fixed,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.location_on_sharp),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search_sharp),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notifications_outlined),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.email_outlined),
+            label: '',
+          ),
+        ],
+        currentIndex: 0,
+        onTap: (int index) {},
+      ),
       body: ValueListenableBuilder(
         valueListenable: widget.controller,
         builder: (context, value, child) {

@@ -17,6 +17,13 @@ sealed class AppTheme {
       border: OutlineInputBorder(),
     ),
     appBarTheme: const AppBarTheme(centerTitle: true),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: AppColor.white,
+        landscapeLayout: BottomNavigationBarLandscapeLayout.linear,
+        unselectedIconTheme: IconThemeData(
+            color: const Color(0xFF939393).withOpacity(0.5), size: 27),
+        selectedIconTheme:
+            const IconThemeData(color: Color(0xFF939393), size: 27)),
     textTheme: GoogleFonts.openSansTextTheme(),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
