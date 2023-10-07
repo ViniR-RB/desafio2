@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:desafio/app/core/models/perfil_model.dart';
 import 'package:desafio/app/core/ui/colors.dart';
 import 'package:flutter/material.dart';
@@ -42,16 +44,27 @@ class _PerfilPageState extends State<PerfilPage> {
                         alignment: Alignment.bottomLeft,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage('assets/images/cidade.jpeg'),
-                          ),
+                              fit: BoxFit.cover,
+                              image: AssetImage('assets/images/cidade.jpeg')),
                         ),
                       ),
                       Positioned(
-                        left: 22, // Ajuste o valor conforme necessário
-                        bottom: 0, // Ajuste o valor conforme necessário
-                        child: Image.asset('assets/images/perfil.png'),
-                      ),
+                          left: 22, // Ajuste o valor conforme necessário
+                          bottom: 0, // Ajuste o valor conforme necessário
+                          child: myPerfil.image.contains('assets')
+                              ? Image.asset('assets/images/perfil.png')
+                              : Container(
+                                  width: 120,
+                                  height: 120,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                          width: 6, color: Colors.white),
+                                      image: DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image:
+                                              FileImage(File(myPerfil.image)))),
+                                )),
                     ],
                   ),
                 ),
