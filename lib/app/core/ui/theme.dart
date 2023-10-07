@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 sealed class AppTheme {
+  
   static ThemeData theme = ThemeData(
     scaffoldBackgroundColor: AppColor.white,
     useMaterial3: true,

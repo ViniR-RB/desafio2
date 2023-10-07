@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:desafio/app/modules/perfil/perfil_controller.dart';
 import 'package:desafio/app/modules/perfil/widgets/card_building.dart';
 import 'package:desafio/app/modules/perfil/widgets/service_informative.dart';
@@ -55,21 +57,36 @@ class _AboutPageState extends State<AboutPage> {
               CustomScrollView(
                 slivers: [
                   SliverAppBar(
-                    leading: switch (Modular.to.canPop()) {
-                      true => IconButton(
-                          onPressed: () => Modular.to.pop(),
-                          icon: const Icon(Icons.arrow_back_ios,
-                              color: AppColor.blue),
-                        ),
-                      false => const SizedBox.shrink(),
-                    },
                     expandedHeight: 212,
-                    flexibleSpace: Container(
-                      width: size.width,
-                      decoration: const BoxDecoration(
-                          image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: AssetImage('assets/images/cidade.jpeg'))),
+                    flexibleSpace: Stack(
+                      children: [
+                        Container(
+                          width: size.width,
+                          alignment: Alignment.bottomLeft,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage('assets/images/cidade.jpeg')),
+                          ),
+                        ),
+                        Positioned(
+                            left: 22, // Ajuste o valor conforme necessário
+                            bottom: 0, // Ajuste o valor conforme necessário
+                            child: myPerfil.image.contains('assets')
+                                ? Image.asset('assets/images/perfil.png')
+                                : Container(
+                                    width: 120,
+                                    height: 120,
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                            width: 6, color: Colors.white),
+                                        image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image: FileImage(
+                                                File(myPerfil.image)))),
+                                  )),
+                      ],
                     ),
                   ),
                   SliverList(
