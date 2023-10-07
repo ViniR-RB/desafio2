@@ -311,6 +311,8 @@ class _EditPerfilPageState extends State<EditPerfilPage> {
                   child: SizedBox(
                       height: 44,
                       child: TextFormField(
+                        strutStyle: const StrutStyle(
+                            height: 1, forceStrutHeight: true, leading: 0),
                         controller: moderadoresEC[index],
                         onChanged: (value) {
                           _moderadores[index] = value;

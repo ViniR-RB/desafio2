@@ -31,8 +31,7 @@ class CustomTextField extends StatelessWidget {
             TextFormField(
               controller: controller,
               strutStyle: const StrutStyle(
-                height: 1,
-              ),
+                  height: 1, forceStrutHeight: true, leading: 0),
               validator: Validatorless.required('Esse Campo é requrido'),
               style: const TextStyle(
                   fontWeight: FontWeight.w400,

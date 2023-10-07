@@ -3,6 +3,7 @@ import 'package:desafio/app/modules/perfil/widgets/card_building.dart';
 import 'package:desafio/app/modules/perfil/widgets/service_informative.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/models/perfil_model.dart';
 import '../../../core/ui/colors.dart';
@@ -263,14 +264,11 @@ class _AboutPageState extends State<AboutPage> {
                                 fontSize: 16, fontWeight: FontWeight.w700),
                           ),
                           const SizedBox(height: 12),
-                          const Row(
+                          Row(
                             children: [
-                              Icon(
-                                Icons.message_outlined,
-                                color: AppColor.purple,
-                              ),
-                              SizedBox(width: 8),
-                              Text(
+                              SvgPicture.asset('assets/images/zap.svg'),
+                              const SizedBox(width: 8),
+                              const Text(
                                 '+55 15 91234-5678',
                                 style: TextStyle(
                                     fontSize: 14,
