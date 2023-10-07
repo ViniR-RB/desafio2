@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:desafio/app/core/models/perfil_model.dart';
 import 'package:desafio/app/core/ui/colors.dart';
 import 'package:flutter/material.dart';
@@ -24,8 +22,8 @@ class _PerfilPageState extends State<PerfilPage> {
 
   @override
   Widget build(BuildContext context) {
-    log('Build Principal');
     Size size = MediaQuery.sizeOf(context);
+
     return Scaffold(
         body: ValueListenableBuilder(
       valueListenable: widget.controller,
@@ -36,18 +34,25 @@ class _PerfilPageState extends State<PerfilPage> {
             CustomScrollView(
               slivers: [
                 SliverAppBar(
-                  leading: switch (Modular.to.canPop()) {
-                    true => IconButton(
-                        onPressed: () => Modular.to.pop(),
-                        icon: const Icon(Icons.arrow_back_ios,
-                            color: AppColor.blue),
-                      ),
-                    false => const SizedBox.shrink(),
-                  },
                   expandedHeight: 212,
-                  flexibleSpace: Container(
-                    width: size.width,
-                    decoration: const BoxDecoration(color: Colors.red),
+                  flexibleSpace: Stack(
+                    children: [
+                      Container(
+                        width: size.width,
+                        alignment: Alignment.bottomLeft,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage('assets/images/cidade.jpeg'),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        left: 22, // Ajuste o valor conforme necessário
+                        bottom: 0, // Ajuste o valor conforme necessário
+                        child: Image.asset('assets/images/perfil.png'),
+                      ),
+                    ],
                   ),
                 ),
                 SliverList(
@@ -168,7 +173,7 @@ class _PerfilPageState extends State<PerfilPage> {
                           image: myPerfil.image,
                           perfilName: myPerfil.perfilName),
                       childCount: 4),
-                )
+                ),
               ],
             ),
           ],

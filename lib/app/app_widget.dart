@@ -12,6 +12,7 @@ class AppWidget extends StatelessWidget {
       title: 'Desafio',
       theme: AppTheme.theme,
       routerConfig: Modular.routerConfig,
+      debugShowCheckedModeBanner: false,
     );
   }
 }

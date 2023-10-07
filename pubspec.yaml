@@ -68,6 +68,7 @@ flutter:
     - assets/images/perfil.png
     - assets/images/bg.svg
     - assets/images/perfil_elypse.png
+    - assets/images/cidade.jpeg
     - assets/images/edificiocentro.png
     - assets/images/edificionorte.png
     - assets/images/edificiosul.png

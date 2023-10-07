@@ -41,7 +41,10 @@ class _AboutPageState extends State<AboutPage> {
                     expandedHeight: 212,
                     flexibleSpace: Container(
                       width: size.width,
-                      decoration: const BoxDecoration(color: Colors.red),
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage('assets/images/cidade.jpeg'))),
                     ),
                   ),
                   SliverList(
